@@ -38,6 +38,11 @@ class Games:
         Returns:
             str: "correcto", "muy alto" o "muy bajo"
         """
+        if intento == numero_secreto:
+            return "correcto"
+        if intento > numero_secreto:
+            return "muy alto"
+        return "muy bajo"
         pass
     
     def ta_te_ti_ganador(self, tablero):
