@@ -90,6 +90,9 @@ class Games:
             generar_combinacion_mastermind(4, ["rojo", "azul", "verde"]) 
             -> ["rojo", "azul", "rojo", "verde"]
         """
+        import random
+        return [random.choice(colores_disponibles) for _ in range(longitud)]
+      
         pass
     
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
