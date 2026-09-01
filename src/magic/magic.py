@@ -150,6 +150,7 @@ class Magic:
         Returns:
             int: El mínimo común múltiplo de a y b
         """
+        return abs(a*b)// self.mcd(a,b) if a and b else 0
         pass
     
     def suma_digitos(self, n):
@@ -162,6 +163,7 @@ class Magic:
         Returns:
             int: La suma de los dígitos de n
         """
+        return sum(int(dig1)for dig1 in str(abs(n)))
         pass
     
     def es_numero_armstrong(self, n):
@@ -174,6 +176,8 @@ class Magic:
         Returns:
             bool: True si n es un número de Armstrong, False en caso contrario
         """
+        num_str =str(n)
+        return sum(int(dig1)**len(num_str) for dig1 in num_str)==n
         pass
     
     def es_cuadrado_magico(self, matriz):
@@ -186,4 +190,18 @@ class Magic:
         Returns:
             bool: True si es un cuadrado mágico, False en caso contrario
         """
+        if not matriz or not all(len(fila) == len(matriz) for fila in matriz):
+            return False
+
+        n = len(matriz)
+        suma_magica = sum(matriz[0])
+
+        for i in range(n):
+            if sum(matriz[i]) != suma_magica or sum(matriz[j][i] for j in range(n)) != suma_magica:
+                return False
+
+        if sum(matriz[i][i] for i in range(n)) != suma_magica or sum(matriz[i][n - i - 1] for i in range(n)) != suma_magica:
+            return False
+
+        return True
         pass
