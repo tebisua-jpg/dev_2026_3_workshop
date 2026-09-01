@@ -126,6 +126,10 @@ class Data:
         Returns:
             bool: True si conjunto1 es subconjunto de conjunto2, False en caso contrario
         """
+        for i in conjunto1:
+            if i not in conjunto2:
+                return False
+        return True
         pass
     
     def implementar_pila(self):
@@ -135,6 +139,13 @@ class Data:
         Returns:
             dict: Diccionario con métodos push, pop, peek y is_empty
         """
+        pila=[]
+        return {
+            "push": lambda x: pila.append(x),
+            "pop": lambda: pila.pop() if pila else None,
+            "peek": lambda: pila[-1] if pila else None,
+            "is_empty": lambda: len(pila) == 0
+        }
         pass
     
     def implementar_cola(self):
@@ -144,6 +155,13 @@ class Data:
         Returns:
             dict: Diccionario con métodos enqueue, dequeue, peek y is_empty
         """
+        cola = []
+        return {
+            "enqueue": lambda x: cola.append(x),
+            "dequeue": lambda: cola.pop(0) if cola else None,
+            "peek": lambda: cola[0] if cola else None,
+            "is_empty": lambda: len(cola) == 0
+        }
         pass
     
     def matriz_transpuesta(self, matriz):
@@ -156,4 +174,7 @@ class Data:
         Returns:
             list: Matriz transpuesta
         """
+        if not matriz or not matriz[0]:
+            return []
+        return [[matriz[j][i] for j in range(len(matriz))] for i in range(len(matriz[0]))]
         pass
