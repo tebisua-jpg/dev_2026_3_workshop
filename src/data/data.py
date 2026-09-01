@@ -68,6 +68,18 @@ class Data:
         Returns:
             list: Lista combinada y ordenada
         """
+        i, j =0,0
+        Result=[]
+        while i<len(lista1)and j <len(lista2):
+            if lista1[i]<lista2[j]:
+                Result.append(lista1[i])
+                i +=1
+            else:
+                Result.append(lista2[j])
+                j+=1
+        Result.extend(lista1[i:])
+        Result.extend(lista2[j:])
+        return Result
         pass
     
     def rotar_lista(self, lista, k):
@@ -81,6 +93,10 @@ class Data:
         Returns:
             list: Lista rotada
         """
+        if not lista:
+            return lista
+        k = k% len(lista)
+        return lista[-k:]+lista[:-k]
         pass
     
     def encuentra_numero_faltante(self, lista):
@@ -93,6 +109,10 @@ class Data:
         Returns:
             int: El número que falta en la secuencia
         """
+        n=len(lista)+1
+        suma= n*(n+1)//2
+        actual_sum =sum(lista)
+        return suma - actual_sum
         pass
     
     def es_subconjunto(self, conjunto1, conjunto2):
