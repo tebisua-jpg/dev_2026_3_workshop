@@ -132,6 +132,15 @@ class Strings:
         Returns:
             bool: True si la cadena representa un número entero, False en caso contrario
         """
+        if not texto:
+
+            return False
+
+        if texto[0] == "-":
+
+            texto = texto[1:]
+
+        return all(char in "0123456789" for char in texto)
         pass
     
     def cifrar_cesar(self, texto, desplazamiento):
@@ -145,6 +154,14 @@ class Strings:
         Returns:
             str: Cadena cifrada
         """
+        resultado = ""
+        for char in texto:
+            if char.isalpha():
+                ascii_offset = ord('A') if char.isupper() else ord('a')
+                resultado += chr((ord(char) - ascii_offset + desplazamiento) % 26 + ascii_offset)
+            else:
+                resultado += char
+        return resultado
         pass
     
     def descifrar_cesar(self, texto, desplazamiento):
@@ -158,6 +175,7 @@ class Strings:
         Returns:
             str: Cadena descifrada
         """
+        return self.cifrar_cesar(texto, -desplazamiento)
         pass
     
     def encontrar_subcadena(self, texto, subcadena):
@@ -171,4 +189,9 @@ class Strings:
         Returns:
             list: Lista con las posiciones iniciales de cada ocurrencia
         """
+        posiciones = []
+        for i in range(len(texto) - len(subcadena) + 1):
+            if texto[i:i + len(subcadena)] == subcadena:
+                posiciones.append(i)
+        return posiciones
         pass
