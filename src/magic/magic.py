@@ -176,15 +176,8 @@ class Magic:
         Returns:
             bool: True si n es un número de Armstrong, False en caso contrario
         """
-        if n < 0:
-         return False
-
-        num_str = str(n)
-        suma = sum(int(digito) ** len(num_str) for digito in num_str)
-
-        return suma == n
-        
-        
+        num_str =str(n)
+        return sum(int(dig1)**len(num_str) for dig1 in num_str)==n
         pass
     
     def es_cuadrado_magico(self, matriz):
