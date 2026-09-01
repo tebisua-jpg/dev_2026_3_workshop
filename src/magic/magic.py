@@ -84,6 +84,10 @@ class Magic:
         Returns:
             bool: True si n es un número perfecto, False en caso contrario
         """
+        if n<2:
+            return False
+        suma_divisores=sum(i for i in range(1,n) if n%i==0)
+        return suma_divisores==n
         pass
     
     def triangulo_pascal(self, filas):
@@ -96,6 +100,12 @@ class Magic:
         Returns:
             list: Lista de listas que representa el triángulo de Pascal
         """
+        triangulo = [[1]]
+        for _ in range(1, filas):
+            fila_anterior = triangulo[-1]
+            nueva_fila = [1] + [fila_anterior[i] + fila_anterior[i + 1] for i in range(len(fila_anterior) - 1)] + [1]
+            triangulo.append(nueva_fila)
+        return triangulo
         pass
     
     def factorial(self, n):
@@ -108,6 +118,10 @@ class Magic:
         Returns:
             int: El factorial de n
         """
+        if n==0 or n==1:
+            return 1
+        else: 
+            return n *self.factorial(n-1)
         pass
     
     def mcd(self, a, b):
@@ -121,6 +135,8 @@ class Magic:
         Returns:
             int: El máximo común divisor de a y b
         """
+        import math
+        return math.gcd(a,b)
         pass
     
     def mcm(self, a, b):
