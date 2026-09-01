@@ -1,3 +1,7 @@
+import math
+pi= math.pi
+from math import gcd
+
 class Geometria:
     """
     Class with geometric exercises.
@@ -41,6 +45,7 @@ class Geometria:
         Returns:
             float: Área del círculo
         """
+        return pi*radio**2
         pass
     
     def perimetro_circulo(self, radio):
@@ -53,6 +58,7 @@ class Geometria:
         Returns:
             float: Perímetro del círculo
         """
+        return 2*pi*radio
         pass
     
     def area_triangulo(self, base, altura):
@@ -66,6 +72,7 @@ class Geometria:
         Returns:
             float: Área del triángulo
         """
+        return (base*altura)/2
         pass
     
     def perimetro_triangulo(self, lado1, lado2, lado3):
