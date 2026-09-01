@@ -125,6 +125,7 @@ class Logica:
         Returns:
             bool: Resultado de la bi-implicación
         """
+        return a == b
         pass
     
     
