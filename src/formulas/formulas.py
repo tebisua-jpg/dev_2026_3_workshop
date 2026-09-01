@@ -197,6 +197,7 @@ class Formulas:
         Ejemplo:
             interes_compuesto(1000, 0.05, 2) -> 1102.5
         """
+        return capital * (1 + tasa / n) ** (n * tiempo)
         pass
 
     def discriminante(self, a, b, c):
@@ -216,6 +217,7 @@ class Formulas:
         Ejemplo:
             discriminante(1, -3, 2) -> 1
         """
+        return b ** 2 - 4 * a * c
         pass
 
     def raices_cuadraticas(self, a, b, c):
@@ -236,6 +238,13 @@ class Formulas:
         Ejemplo:
             raices_cuadraticas(1, -3, 2) -> (2.0, 1.0)
         """
+        discriminante = b ** 2 - 4 * a *c
+        if discriminante < 0:
+            raise ValueError ("la ecuacion no tiene raices reales")
+        raiz1 = (-b + discriminante ** 0.5) / (2 * a)
+        raiz2 = (-b - discriminante ** 0.5) / (2 * a)
+        return raiz1, raiz2
+
         pass
 
     def imc(self, peso, altura):
@@ -254,6 +263,7 @@ class Formulas:
         Ejemplo:
             imc(70, 1.75) -> 22.86
         """
+        return peso / altura ** 2
         pass
 
     def hipotenusa_pitagoras(self, cateto1, cateto2):
@@ -272,4 +282,5 @@ class Formulas:
         Ejemplo:
             hipotenusa_pitagoras(3, 4) -> 5.0
         """
+        return (cateto1 ** 2 + cateto2 ** 2) ** 0.5
         pass
