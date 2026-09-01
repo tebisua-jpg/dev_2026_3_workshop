@@ -87,6 +87,7 @@ class Geometria:
         Returns:
             float: Perímetro del triángulo
         """
+        return lado1+lado2+lado3
         pass
     
     def es_triangulo_valido(self, lado1, lado2, lado3):
@@ -103,6 +104,7 @@ class Geometria:
         Returns:
             bool: True si los lados pueden formar un triángulo, False en caso contrario
         """
+        return (lado1+lado2>lado3 and lado3+lado1>lado2 and lado2+lado3>lado1)
         pass
     
     def area_trapecio(self, base_mayor, base_menor, altura):
@@ -117,6 +119,7 @@ class Geometria:
         Returns:
             float: Área del trapecio
         """
+        return ((base_mayor+base_menor)*altura)/2
         pass
     
     def area_rombo(self, diagonal_mayor, diagonal_menor):
@@ -130,6 +133,7 @@ class Geometria:
         Returns:
             float: Área del rombo
         """
+        return (diagonal_mayor*diagonal_menor)/2
         pass
     
     def area_pentagono_regular(self, lado, apotema):
