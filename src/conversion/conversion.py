@@ -87,6 +87,10 @@ class Conversion:
             decimal_a_binario(10) -> "1010"
             decimal_a_binario(255) -> "11111111"
         """
+        if decimal < 0:
+            raise ValueError("El número debe ser positivo")
+
+        return bin(decimal)[2:]
         pass
     
     def binario_a_decimal(self, binario):
@@ -103,6 +107,13 @@ class Conversion:
             binario_a_decimal("1010") -> 10
             binario_a_decimal("11111111") -> 255
         """
+        if not binario:
+            raise ValueError("El número binario no puede estar vacío")
+
+        if any(digito not in "01" for digito in binario):
+            raise ValueError("El número contiene caracteres que no son binarios")
+
+        return int(binario, 2)
         pass
     
     def decimal_a_romano(self, numero):
@@ -119,6 +130,33 @@ class Conversion:
             decimal_a_romano(9) -> "IX"
             decimal_a_romano(1994) -> "MCMXCIV"
         """
+        if numero < 1 or numero > 3999:
+            raise ValueError("El número debe estar entre 1 y 3999")
+
+        valores = [
+            (1000, "M"),
+            (900, "CM"),
+            (500, "D"),
+            (400, "CD"),
+            (100, "C"),
+            (90, "XC"),
+            (50, "L"),
+            (40, "XL"),
+            (10, "X"),
+            (9, "IX"),
+            (5, "V"),
+            (4, "IV"),
+            (1, "I")
+        ]
+
+        romano = ""
+
+        for valor, simbolo in valores:
+            while numero >= valor:
+                romano += simbolo
+                numero -= valor
+
+        return romano
         pass
     
     def romano_a_decimal(self, romano):
@@ -135,6 +173,32 @@ class Conversion:
             romano_a_decimal("IX") -> 9
             romano_a_decimal("MCMXCIV") -> 1994
         """
+        if not romano:
+            raise ValueError("El número romano no puede estar vacío")
+
+        valores = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        }
+
+        romano = romano.upper()
+        total = 0
+
+        for i in range(len(romano)):
+            if romano[i] not in valores:
+                raise ValueError("Número romano inválido")
+
+            if i + 1 < len(romano) and valores[romano[i]] < valores[romano[i + 1]]:
+                total -= valores[romano[i]]
+            else:
+                total += valores[romano[i]]
+
+        return total
         pass
     
     def texto_a_morse(self, texto):
