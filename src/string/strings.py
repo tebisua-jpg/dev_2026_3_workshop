@@ -73,6 +73,8 @@ class Strings:
         Returns:
             bool: True si son anagramas, False en caso contrario
         """
+        return sorted(texto1.replace(" ", "").lower())== sorted(texto2.replace(" ","").lower())
+
         pass
     
     def contar_palabras(self, texto):
@@ -85,6 +87,7 @@ class Strings:
         Returns:
             int: Número de palabras en la cadena
         """
+        return len(texto.split())
         pass
     
     def palabras_mayus(self, texto):
@@ -97,6 +100,8 @@ class Strings:
         Returns:
             str: Cadena con la primera letra de cada palabra en mayúscula
         """
+        palabras=texto.split(" ")
+        return " ".join(palabra.capitalize() if palabra else "" for palabra in palabras)
         pass
     
     def eliminar_espacios_duplicados(self, texto):
@@ -109,6 +114,12 @@ class Strings:
         Returns:
             str: Cadena sin espacios duplicados
         """
+        resultado = " ".join(texto.split())  
+        if texto.startswith(" "):
+            resultado = " " + resultado  
+        if texto.endswith(" "):
+            resultado += " "
+        return resultado
         pass
     
     def es_numero_entero(self, texto):
