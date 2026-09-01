@@ -14,6 +14,12 @@ class Magic:
         Returns:
             int: El n-ésimo número de Fibonacci
         """
+        if n <=0:
+            return 0
+        elif n==1:
+            return 1
+        else: 
+            return self.fibonacci(n-1)+ self.fibonacci(n-2)
         pass
     
     def secuencia_fibonacci(self, n):
@@ -26,6 +32,11 @@ class Magic:
         Returns:
             list: Lista con los primeros n números de Fibonacci
         """
+        sec_fib=[0,1]
+        for i in range(2,n):
+            sec_fib.append(sec_fib[-1]+ sec_fib[-2])
+        
+        return sec_fib[:n]
         pass
     
     def es_primo(self, n):
@@ -38,6 +49,12 @@ class Magic:
         Returns:
             bool: True si n es primo, False en caso contrario
         """
+        if n <2:
+            return False
+        for i in range(2, int(n**0.5)+1):
+            if n % i==0:
+                return False
+        return True
         pass
     
     def generar_primos(self, n):
@@ -50,6 +67,11 @@ class Magic:
         Returns:
             list: Lista de números primos hasta n
         """
+        primos=[]
+        for j in range(2,n+1):
+            if self.es_primo(j):
+                primos.append(j)
+        return primos
         pass
     
     def es_numero_perfecto(self, n):
