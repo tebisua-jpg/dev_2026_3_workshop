@@ -215,6 +215,59 @@ class Conversion:
             texto_a_morse("SOS") -> "... --- ..."
             texto_a_morse("HELLO") -> ".... . .-.. .-.. ---"
         """
+        morse = {
+            "A": ".-",
+            "B": "-...",
+            "C": "-.-.",
+            "D": "-..",
+            "E": ".",
+            "F": "..-.",
+            "G": "--.",
+            "H": "....",
+            "I": "..",
+            "J": ".---",
+            "K": "-.-",
+            "L": ".-..",
+            "M": "--",
+            "N": "-.",
+            "O": "---",
+            "P": ".--.",
+            "Q": "--.-",
+            "R": ".-.",
+            "S": "...",
+            "T": "-",
+            "U": "..-",
+            "V": "...-",
+            "W": ".--",
+            "X": "-..-",
+            "Y": "-.--",
+            "Z": "--..",
+            "0": "-----",
+            "1": ".----",
+            "2": "..---",
+            "3": "...--",
+            "4": "....-",
+            "5": ".....",
+            "6": "-....",
+            "7": "--...",
+            "8": "---..",
+            "9": "----."
+        }
+
+        resultado = []
+
+        for caracter in texto.upper():
+            if caracter == " ":
+                resultado.append("/")
+            elif caracter in morse:
+                resultado.append(morse[caracter])
+            else:
+                raise ValueError(
+                    f"Caracter no soportado: {caracter}"
+                )
+
+        return " ".join(resultado)
+
         pass
     
     def morse_a_texto(self, morse):
@@ -231,4 +284,56 @@ class Conversion:
             morse_a_texto("... --- ...") -> "SOS"
             morse_a_texto(".... . .-.. .-.. ---") -> "HELLO"
         """
+        codigo_morse = {
+            ".-": "A",
+            "-...": "B",
+            "-.-.": "C",
+            "-..": "D",
+            ".": "E",
+            "..-.": "F",
+            "--.": "G",
+            "....": "H",
+            "..": "I",
+            ".---": "J",
+            "-.-": "K",
+            ".-..": "L",
+            "--": "M",
+            "-.": "N",
+            "---": "O",
+            ".--.": "P",
+            "--.-": "Q",
+            ".-.": "R",
+            "...": "S",
+            "-": "T",
+            "..-": "U",
+            "...-": "V",
+            ".--": "W",
+            "-..-": "X",
+            "-.--": "Y",
+            "--..": "Z",
+            "-----": "0",
+            ".----": "1",
+            "..---": "2",
+            "...--": "3",
+            "....-": "4",
+            ".....": "5",
+            "-....": "6",
+            "--...": "7",
+            "---..": "8",
+            "----.": "9"
+        }
+
+        resultado = []
+
+        for codigo in morse.split():
+            if codigo == "/":
+                resultado.append(" ")
+            elif codigo in codigo_morse:
+                resultado.append(codigo_morse[codigo])
+            else:
+                raise ValueError(
+                    f"Código Morse inválido: {codigo}"
+                )
+
+        return "".join(resultado)
         pass
