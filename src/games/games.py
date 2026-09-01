@@ -60,18 +60,24 @@ class Games:
              ["O", "O", " "],
              [" ", " ", " "]] -> "X"
         """
-        lineas = []
-        lineas.extend(tablero)
-        for columna in range(3):
-            lineas.append([tablero[0][0], tablero[1][1], tablero[2],[2]])
-            lineas.append([tablero[0][2], tablero[1][1], tablero[2],[0]])
-        for linea in lineas:
-            if linea[0] != " " and linea[0] == linea[1] == linea[2]:
-                return linea[0]
+        for i in range(3):
+         if tablero[i][0] != " " and tablero[i][0] == tablero[i][1] == tablero[i][2]:
+                return tablero[i][0]
+
+         if tablero[0][i] != " " and tablero[0][i] == tablero[1][i] == tablero[2][i]:
+                return tablero[0][i]
+
+        if tablero[0][0] != " " and tablero[0][0] == tablero[1][1] == tablero[2][2]:
+            return tablero[0][0]
+
+        if tablero[0][2] != " " and tablero[0][2] == tablero[1][1] == tablero[2][0]:
+            return tablero[0][2]
+
         for fila in tablero:
             if " " in fila:
-                return "continua" 
-        return "empte"
+                return "continua"
+
+        return "empate"
 
         pass
     
@@ -113,4 +119,7 @@ class Games:
             - La torre se mueve horizontal o verticalmente
             - No puede saltar sobre otras piezas
         """
+        
         pass
+
+
