@@ -239,6 +239,7 @@ class Geometria:
         Returns:
             float: Área de la superficie de la esfera
         """
+        return 4*pi*(radio**2)
         pass
     
     def volumen_cilindro(self, radio, altura):
@@ -252,6 +253,7 @@ class Geometria:
         Returns:
             float: Volumen del cilindro
         """
+        return pi*(radio**2)*altura
         pass
     
     def area_superficie_cilindro(self, radio, altura):
@@ -265,6 +267,7 @@ class Geometria:
         Returns:
             float: Área de la superficie del cilindro
         """
+        return 2 * pi * radio * (radio + altura)
         pass
     
     def distancia_entre_puntos(self, x1, y1, x2, y2):
@@ -280,6 +283,7 @@ class Geometria:
         Returns:
             float: Distancia entre los dos puntos
         """
+        return round(math.sqrt((x2-x1)**2+(y2-y1)**2),2)
         pass
     
     def punto_medio(self, x1, y1, x2, y2):
@@ -295,6 +299,7 @@ class Geometria:
         Returns:
             tuple: Coordenadas (x, y) del punto medio
         """
+        return (round((x1 + x2) / 2, 2), round((y1 + y2) / 2, 2))
         pass
     
     def pendiente_recta(self, x1, y1, x2, y2):
@@ -310,6 +315,9 @@ class Geometria:
         Returns:
             float: Pendiente de la recta
         """
+        if x1 == x2:
+            raise ZeroDivisionError("La pendiente es indefinida para una línea vertical")
+        return round((y2 - y1) / (x2 - x1))
         pass
     
     def ecuacion_recta(self, x1, y1, x2, y2):
